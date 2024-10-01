@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Telegram Mini App</title>
+
+</head>
+<body>
+    <h1>Выберите PDF файл для отправки</h1>
+    <button id="pdf1">Отправить PDF 1</button>
+    <button id="pdf2">Отправить PDF 2</button>
+    <button id="pdf3">Отправить PDF 3</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+
+    <script>
+        const botToken = '6520991949:AAFlFvJ-MFi3bDl5ecJQa-qnaIg35V7XKx0'; // Замените на токен вашего бота
+        const chatId = '740590041'; // Замените на ID чата, куда отправлять сообщения
+
+        document.getElementById('pdf1').onclick = () => sendDocument('Рим1');
+        document.getElementById('pdf2').onclick = () => sendDocument('pdf_2');
+        document.getElementById('pdf3').onclick = () => sendDocument('pdf_3');
+
+        function sendDocument(fileId) {}
+    const formData = new FormData();
+    formData.append('chat_id', chatId);
+    formData.append('document', fileId);
+
+    fetch( ), {
+        method: 'POST',
+        body: formData
+    }
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        if (data.ok) {
+            alert('Файл отправлен!');
+        } else {
+            alert(Ошибка: ${data.description});
+        }
+    })
+    .catch(error => {
+        console.error('Ошибка:', error);
+        alert('Произошла ошибка при отправке файла.');
+    });
+</body>
+</html>
